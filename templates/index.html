@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>IgnitionEye</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="static/img/fire.png" type="image/x-icon" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+  <!-- MDB -->
+  <link rel="stylesheet" href="static/css/mdb.min.css" />
+  <link href="static/style2.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div id="SplashScreen">
+    <div class="progress">
+      <div class="progress-bar pcolor" id="pbar" role="progressbar" aria-valuenow="10" aria-valuemin="0"
+        aria-valuemax="100"></div>
+    </div>
+    <div id="splashimgDiv">
+      <img src="static/img/fire.png" id="splashimg">
+    </div>
+    <h1>
+      <span class="let1">I</span>
+      <span class="let2">g</span>
+      <span class="let3">n</span>
+      <span class="let4">i</span>
+      <span class="let5">t</span>
+      <span class="let6">i</span>
+      <span class="let7">o</span>
+      <span class="let8">n</span>
+      <span class="let9">E</span>
+      <span class="let10">y</span>
+      <span class="let11">e</span>
+    </h1>
+  </div>
+
+  <div class="" style="display:none" id="mainDiv">
+    <header>
+      <!-- Sidebar -->
+      <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse">
+        <div class="position-sticky">
+          <div class="list-group list-group-flush mx-3 mt-4">
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple active">
+              <i class="fas fa-camera fa-fw me-3"></i>Detect
+            </a>
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple" id="analyseURL" data-mdb-toggle="modal" data-mdb-target="#analyzeModal">
+              <i class="fa-solid fa-magnifying-glass me-3"></i>Analyze
+            </a>
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple" data-mdb-toggle="modal" data-mdb-target="#settingsModal"><i
+                class="fas fa-gears fa-fw me-3" id="smod"></i>Settings</a>
+          </div>
+        </div>
+      </nav>
+      <!-- Sidebar -->
+
+      <!-- Navbar -->
+      <nav id="main-navbar" class="navbar navbar-expand-lg navbar-dark bg-white fixed-top">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+          <!-- Toggle button -->
+          <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
+            aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <!-- Brand -->
+          <a class="navbar-brand" id="headLink" href="">Ignition<sp1>Eye</sp1></a>
+
+
+
+          <!-- Right links -->
+          <ul class="navbar-nav ms-auto d-flex flex-row">
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
+                id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                <img src="static/img/fire.png" class="rounded-circle" height="22" alt="" loading="lazy"
+                  style="transform:scale(2.25)" />
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- Container wrapper -->
+      </nav>
+      <!-- Navbar -->
+    </header>
+    <!--Main Navigation-->
+
+    <!--Main layout-->
+    <main style="margin-top: 58px">
+      <div class="container pt-4">
+        <img id="detectIMG" src="static/img/cam-error.jpg"/>
+        <br/>
+        <div class="container">
+          <div align="center">
+            <button class="btn" id="camcontrol">Start Supervisioning</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="settingsModalLabel">Settings</h5>
+          <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="height:350px">
+          <div class="container">
+            <div class="form-outline">
+              <input type="tel" id="phoneno" class="form-control" />
+              <label class="form-label" for="phoneno">Phone Number</label>
+            </div>
+            <br/>
+            <label class="form-label" for="camsel">Select Camera</label>
+            <select class="form-select" id="camsel">
+              <option value="0">Camera 1</option>
+              <option value="1">Camera 2</option>
+              <option value="2">Camera 3</option>
+            </select>
+            <br/>
+            <label class="form-label" for="conf">Confidence</label>
+            <div class="range">
+              <input type="range" class="form-range" id="conf" />
+              <div align="right">
+                <input type="text" disabled id="conf-value" style="width:35px">
+              </div>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="salarm" />
+              <label class="form-check-label" for="salarm">Set Alarm</label>
+            </div>
+            <div class="form-check" style="margin-top:10px">
+              <input class="form-check-input" type="checkbox" id="ssms" />
+              <label class="form-check-label" for="ssms">Send SMS</label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="datasave">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="analyzeModal" tabindex="-1" aria-labelledby="analyzeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="analyzeModalLabel">Analyze Video or Image</h5>
+          <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="height:500px;">
+          <div class="container">
+            <form id="upload-form" enctype="multipart/form-data">
+              <div class=""> 
+                <label class="form-label" for="uploadFile">Upload Image or Video</label>
+                <input type="file" class="form-control" name="uploadfiledata" id="uploadFile" accept=".jpg,.jpeg,.png,.gif,.mp4,.mpeg,.m4a,.mkv, .m4v"/>
+                <div class="form-check" style="margin-top:10px">
+                  <input class="form-check-input" type="checkbox" id="showprev" />
+                  <label class="form-check-label" for="showprev">Show Preview</label>
+                </div>
+                <div style="margin-top:10px; display:none" align="center" id="datadiv"></div>
+                <input type="hidden" value="" id="filetype" name="filetype">
+                <div class="ml-auto" style="margin-top:15px">
+                  <button class="btn btn-primary btn-block" id="upbtn">Analyze</button>
+                </div>
+                <div style="margin-top:15px;" align="center" id="datadiv2">
+                  
+                </div>
+              </div>
+          </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MDB -->
+  <script type="text/javascript" src="static/js/mdb.min.js"></script>
+  <!-- Custom scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  {% if error %}
+  <script>
+    $("#SplashScreen").css("display", "none")
+    $("#mainDiv").css("display", "block")
+    alert("Please configure the settings!")
+    $("#smod").click()
+  </script>
+  {% endif %}
+
+  <script>
+    $(document).ready(function () {
+      var progressBar = $('#pbar');
+      progressBar.animate({
+        width: '100%'
+      }, 2510, function () {
+        progressBar.attr('aria-valuenow', '100');
+      });
+      setTimeout(() => {
+        $("#SplashScreen").css("display", "none")
+        $("#mainDiv").css("display", "block")
+      }, 3000);
+    });
+
+    const confRange = document.getElementById('conf');
+    const confValue = document.getElementById('conf-value');
+
+    confRange.addEventListener('input', () => {
+      confValue.value = confRange.value;
+    });
+
+    $("#datasave").click(function () {
+      let conf = $("#conf").val()
+      let phoneno = $("#phoneno").val()
+      let camera = $("#camsel").val()
+      if (conf != "" && phoneno != "" && camera != "") {
+        $.ajax({
+          url: "/settings",
+          method: "POST",
+          data: {
+            confidence: conf,
+            phoneno: phoneno,
+            camera: camera,
+            alarm: $("#salarm").prop('checked'),
+            sms: $("#ssms").prop('checked')
+          },
+          success: function (response) {
+            alert(response)
+          },
+          error: function (xhr, status, error) {
+            alert(error)
+          }
+        });
+      } else {
+        alert("Please enter the details")
+      }
+    });
+
+    let cam_stat = true
+    $("#camcontrol").click(function(){
+
+      if(cam_stat){
+        alert("Supervisioning started!")
+      }else{
+        alert("Supervisioning stoped!")
+        $("#detectIMG").attr("src", "static/img/cam-error.jpg")
+      }
+
+      $.ajax({
+        url: "/control_cam",
+        method: 'POST',
+        data: {
+          status: cam_stat
+        },
+        success: function(response){
+          if(cam_stat == true){
+            $("#detectIMG").attr("src", "{{ url_for('video_feed') }}")
+            $("#camcontrol").html("Stop Supervisioning")
+            cam_stat = false
+          }else{
+            $("#camcontrol").html("Start Supervisioning")
+            cam_stat = true
+          }
+        }
+      })
+    })
+
+    $("#showprev").change(function(){
+      $("#datadiv").slideToggle("slow")
+    })
+
+    $('#uploadFile').change(function() {
+      var file = this.files[0]
+      var ext = file.name.split('.').pop().toLowerCase()
+      vidFiles = ['m4a', 'm4v', 'mkv', 'mp4', 'mpeg']
+      imFiles = ['jpg', 'jpeg', 'png', 'gif']
+      var dataUrl = URL.createObjectURL(file);
+      if (vidFiles.indexOf(ext) !== -1) {
+        $("#datadiv").html(
+          "<video id='video-player' width='640' height='380' style='background-color:black' controls></video>"
+        )
+        $('#video-player').attr('src', dataUrl);
+        $("#filetype").val('video')
+      } else if(imFiles.indexOf(ext) !== -1){
+        $("#datadiv").html(
+          "<div class='container' style='background-color:black; height:380px; width: 640px; padding:10px;'><img id='img-tag' class='img-fluid' style='height: 100%'/></div>"
+        )
+        $('#img-tag').attr('src', dataUrl);
+        $("#filetype").val('image')
+      }
+    });
+
+
+    $('#upload-form').submit(function(e) {
+      e.preventDefault();
+      $("#datadiv2").html(
+        "<div align='center' style='margin-top:60px'>"+
+        "<div class='spinner2'></div>"+
+        "</div>"
+      )
+      var formData = new FormData(this);
+      $.ajax({
+        url: '/analyze_data',
+        type: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+          $("#datadiv2").slideUp("slow")
+          if($("#filetype").val() == 'image'){
+            $("#datadiv2").html(
+              "<h3>Assesment Result</h3><br/>"+
+              "<div class='container' style='background-color:black; height:380px; width: 640px; padding:10px;'><img id='img-tag2' class='img-fluid' style='height: 100%'/></div>"
+            )
+            $("#img-tag2").attr("src", response)
+            $("#datadiv2").slideDown("slow")
+          } else if($("#filetype").val() == 'video'){
+            $("#datadiv2").html(
+              "<h3>Assesment Result</h3><br/>"+
+              "<video id='video-player2' width='640' height='380' style='background-color:black' controls></video>"
+            )
+            if(response == 'true'){
+              $("#video-player2").attr("src", "/video_data")
+              $("#datadiv2").slideDown("slow")
+            }else{
+              alert("The file is not processed!")
+            }
+          }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          alert('Error uploading file: ' + errorThrown);
+        }
+      });
+    });
+
+    $(document).ready(function(){
+      $.ajax({
+      url: "/get_num",
+      success: function(response){
+        conf = response.conf
+        phoneno = response.phoneno
+        cam = response.cam
+        alarm = response.alarm
+        sms = response.sms
+        $("#phoneno").val(phoneno)
+        $("#conf-value").val(conf)
+        $("#ssms").prop('checked', Boolean(sms))
+        $("#salarm").prop('checked', Boolean(alarm))
+        $("#camsel").val(parseInt(cam))
+	    }
+    })
+    })
+
+
+  </script>
+
+</body>
+
+</html>
